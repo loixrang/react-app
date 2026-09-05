@@ -1,13 +1,14 @@
-import Alert from "./components/Alert";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Food from "./components/Food";
 
 function App() {
-  
   return (
-    <div>
-      <Alert>
-        Hello <span className="bg-amber-700 text-white">World</span>
-      </Alert>
-    </div>
+    <>
+      <Header />
+      <Food />
+      <Footer />
+    </>
   );
 }
 
