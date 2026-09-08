@@ -1,16 +1,16 @@
 import { useState } from "react"
 
 const MyComponent = () => {
-  let [name, setName] = useState("Guest")
+  let [name, setName] = useState("")
 
-  const updateName = () => {
-    setName("James")
+  const handleNameChange = (event) => {
+    setName(event.target.value)
   }
 
   return (
-    <div>
+    <div className="p-3">
+      <input value={name} onChange={handleNameChange} className="border border-blue-800" type="text" />
       <p>Name: {name}</p>
-      <button onClick={updateName}>Set Name</button>
     </div>
   )
 

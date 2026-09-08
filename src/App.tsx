@@ -1,9 +1,9 @@
-import BlackJack from "./components/BlackjackGame";
+import MyComponent from "./components/MyComponent";
 
 function App() {
   return (
     <>
-      <BlackJack name="Akpabio" chips={145}/>
+      <MyComponent/>
     </>
   );
 }
