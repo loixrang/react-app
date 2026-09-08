@@ -7,14 +7,15 @@ interface Player {
 const BlackJack = ({name, chips}: Player) => {
   
   const [prompt, setPrompt] = useState('Want to play a round?')
-  const [card, setCard] = useState('Card: 0')
-  const [total, setTotal] = useState('Sum: ')
+  // const [card, setCard] = useState('')
+  const [total, setTotal] = useState<number>(0)
   const [isALive, setIsAlive] = useState(false)
   const [hasBlackJack, setHasBlackJack] = useState(false)
+  let [cards, setCards] = useState<number[]>([])
   
-  let cards: number[]
+  // let cards: number[]
   let sum = 0;
-  let message;
+  // let message: string;
   let sumEl;
 
   function getRandomCard() {
@@ -32,22 +33,16 @@ const BlackJack = ({name, chips}: Player) => {
     setIsAlive(true)
     let firstCard = getRandomCard();
     let secondCard = getRandomCard();
-    cards = [firstCard, secondCard];
+    setCards(prev => [...prev, firstCard, secondCard])
     sum = firstCard + secondCard;
+    setTotal(sum)
     renderGame();
   }
 
   function renderGame() {
-    message = `Card: `;
-    for (let i = 0; i < cards.length; i++) {
-      message += `${cards[i]} `;
-      setCard(message)
-    }
-    sumEl = `Sum: ${sum}`;
-    setTotal(sumEl)
-    if (sum <= 20) {
+    if (total <= 20) {
       setPrompt("do you want to draw a new card?")
-    } else if (sum === 21) {
+    } else if (total === 21) {
       setPrompt("Wohoo! You've got a Blackjack!")
       setHasBlackJack(true)
       setIsAlive(false)
@@ -60,14 +55,12 @@ const BlackJack = ({name, chips}: Player) => {
   function newCard() {
     if (hasBlackJack || !isALive) {
       setPrompt("you can't play anymore. Start Game")
-      console.log(hasBlackJack, !isALive)
-      console.log(sum)
       return
     } else {
-      let cardz = getRandomCard();
-      sum += cardz;
-      cards.push(cardz);
-      console.log(cards)
+      let card = getRandomCard();
+      sum += card;
+      setTotal(prev => prev + sum)
+      setCards(prev => [...prev, card])
       renderGame();
     }
   }
@@ -75,8 +68,8 @@ const BlackJack = ({name, chips}: Player) => {
     <main className="bg-green-700 text-white flex items-center justify-center flex-col h-dvh font-sans">
       <h1 className="text-[goldenrod] text-2xl font-black">Blackjack</h1>
       <p className="font-bold italic text-white py-2">{prompt}</p>
-      <p className="">{card}</p>
-      <p>{total}</p>
+      <p className="">Card: {cards.join(", ")}</p>
+      <p>Sum: {total}</p>
       <button onClick={startGame}>Start Game</button>
       <button onClick={newCard}>New Card</button>
       <p>{name + ": $" + chips}</p>
