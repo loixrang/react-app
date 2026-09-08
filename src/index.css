@@ -3,3 +3,13 @@
 .active {
   @apply bg-blue-600 text-white
 }
+button {
+  font-weight: 700;
+  margin: 0.2em 0;
+  border: none;
+  width: 9em;
+  height: 2em;
+  color: green;
+  background-color: goldenrod;
+  border-radius: 2px;
+}

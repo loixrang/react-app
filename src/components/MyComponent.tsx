@@ -13,6 +13,8 @@ const MyComponent = () => {
       <button onClick={updateName}>Set Name</button>
     </div>
   )
+
+  //Bro code stopped at 1:51:32
 }
 
 export default MyComponent
