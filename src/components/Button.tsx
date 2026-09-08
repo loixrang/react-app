@@ -1,17 +1,10 @@
 const Button = () => {
   
   let count = 0
-  const handleClick = (name: string) => {
-    if (count < 3) {
-      count++
-      console.log(`${name} you clicked me ${count} time(s)`)
-      return
-    }
-    console.log(`${name} stop clicking me!!`)
-  }
+  const handleClick = (e: unknown) => e.target.textContent = 'Ouch! 😕'
 
   return (
-    <button onClick={() => handleClick('Samuel')} className="cursor-pointer">Click Me 😊</button>
+    <button onDoubleClick={(e) => handleClick(e)} className="cursor-pointer">Click Me 😊</button>
   )
 }
 
