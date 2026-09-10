@@ -7,23 +7,18 @@ interface Player {
 const BlackJack = ({name, chips}: Player) => {
   
   const [prompt, setPrompt] = useState('Want to play a round?')
-  // const [card, setCard] = useState('')
-  const [total, setTotal] = useState<number>(0)
+  let [total, setTotal] = useState<number>(0)
   const [isALive, setIsAlive] = useState(false)
   const [hasBlackJack, setHasBlackJack] = useState(false)
-  let [cards, setCards] = useState<number[]>([])
-  
-  // let cards: number[]
+  const [cards, setCards] = useState<number[]>([])
   let sum = 0;
-  // let message: string;
-  let sumEl;
 
   function getRandomCard() {
     let randomCard = Math.floor(Math.random() * 13) + 1;
     if (randomCard === 1) {
-      return 11;
+      return 2;
     } else if (randomCard > 10) {
-      return 10;
+      return 5;
     } else {
       return randomCard;
     }
@@ -31,11 +26,13 @@ const BlackJack = ({name, chips}: Player) => {
 
   function startGame() {
     setIsAlive(true)
+    setHasBlackJack(false)
     let firstCard = getRandomCard();
     let secondCard = getRandomCard();
-    setCards(prev => [...prev, firstCard, secondCard])
+    setCards([firstCard, secondCard])
     sum = firstCard + secondCard;
-    setTotal(sum)
+    total = sum
+    setTotal(total)
     renderGame();
   }
 
@@ -59,7 +56,8 @@ const BlackJack = ({name, chips}: Player) => {
     } else {
       let card = getRandomCard();
       sum += card;
-      setTotal(prev => prev + sum)
+      total += sum
+      setTotal(total)
       setCards(prev => [...prev, card])
       renderGame();
     }
