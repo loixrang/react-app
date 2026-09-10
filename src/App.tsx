@@ -1,10 +1,10 @@
-import ToDoList from "./components/ToDoList";
+import UpdateTitle from "./components/UpdateTitle";
 
 function App() {
 
   return (
     <>
-      <ToDoList/>
+      <UpdateTitle/>
     </>
   );
 }
