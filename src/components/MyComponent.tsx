@@ -4,8 +4,9 @@ const MyComponent = () => {
   let [food, setFood] = useState<string[]>(["Apple", "Orange", "Banana"])
 
   const handleAddFood = () => {
-    const newFood: unknown = document.getElementById("foodInput")?.value
-    document.getElementById("foodInput").value = ''
+    const getInput = (q: string) => document.getElementById(q) as HTMLInputElement
+    const newFood: string = getInput("foodInput").value
+    getInput("foodInput").value = ''
     setFood(prev =>[...prev, newFood])
   }
   const handleRemoveFood = (index: unknown) => {
