@@ -1,20 +1,27 @@
 import { useState } from "react"
 
 const MyComponent = () => {
-  let [name, setName] = useState("")
+  let [food, setFood] = useState<string[]>(["Apple", "Orange", "Banana"])
 
-  const handleNameChange = (event) => {
-    setName(event.target.value)
+  const handleAddFood = () => {
+    const newFood: unknown = document.getElementById("foodInput")?.value
+    document.getElementById("foodInput").value = ''
+    setFood(prev =>[...prev, newFood])
+  }
+  const handleRemoveFood = (index: unknown) => {
+    setFood(food.filter((_, i) => i !== index))
   }
 
   return (
-    <div className="p-3">
-      <input value={name} onChange={handleNameChange} className="border border-blue-800" type="text" />
-      <p>Name: {name}</p>
+    <div className="m-2">
+      <h2>List of food</h2>
+      <ul>
+        {food.map((food, index) => <li key={index} onClick={() => handleRemoveFood(index)}>{food}</li>)}
+      </ul>
+      <input className="border border-amber-500 p-0.5 mr-2" type="text" id="foodInput" placeholder="Enter food name"/>
+      <button onClick={handleAddFood}>Add food</button>
     </div>
   )
-
-  //Bro code stopped at 1:51:32
 }
 
 export default MyComponent
