@@ -1,11 +1,10 @@
-import MyComponent from "./components/MyComponent";
-// import BlackJack from "./components/BlackjackGame";
+import ToDoList from "./components/ToDoList";
 
 function App() {
+
   return (
     <>
-      <MyComponent/>
-      {/* <BlackJack name="Akpabio" chips={145}/> */}
+      <ToDoList/>
     </>
   );
 }
