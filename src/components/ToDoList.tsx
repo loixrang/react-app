@@ -4,7 +4,7 @@ const ToDoList = () => {
   const [tasks, setTask] = useState<string[]>([]);
   const [newTasks, setNewTask] = useState("");
 
-  function handleInputChange(event) {
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     setNewTask(event.target.value);
   }
   function addTask() {
