@@ -1,10 +1,10 @@
-import UpdateTitle from "./components/UpdateTitle";
+import ComponentA from "./components/ComponentA";
 
 function App() {
 
   return (
     <>
-      <UpdateTitle/>
+      <ComponentA/>
     </>
   );
 }
