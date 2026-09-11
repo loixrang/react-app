@@ -1,12 +1,7 @@
-import ComponentA from "./components/ComponentA";
+import StopWatch from "./components/StopWatch";
 
 function App() {
-
-  return (
-    <>
-      <ComponentA/>
-    </>
-  );
+  return <StopWatch />;
 }
 
 export default App;
